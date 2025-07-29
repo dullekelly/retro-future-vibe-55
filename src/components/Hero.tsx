@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { useContent } from "@/hooks/useContent";
 import heroImage from "@/assets/hero-retro.jpg";
 
 const Hero = () => {
+  const { getContent, loading } = useContent();
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Carregando...</div>;
+  }
   return (
     <section className="relative min-h-screen bg-cream overflow-hidden">
       {/* Vintage texture overlay */}
@@ -21,24 +27,16 @@ const Hero = () => {
                 KIT BRANDING
               </p>
               <h1 className="font-anton text-hero leading-none">
-                <span className="block text-foreground">DIFERENTE</span>
+                <span className="block text-foreground">{getContent('hero', 'title', 'DIFERENTE')}</span>
                 <span className="block text-transparent bg-gradient-retro bg-clip-text animate-gradient-shift">
-                  DOS IGUAIS
+                  {getContent('hero', 'subtitle', 'DOS IGUAIS')}
                 </span>
               </h1>
             </div>
             
             <div className="space-y-6">
-              <h2 className="font-anton text-title leading-tight text-foreground">
-                CONSTRUA UMA<br />
-                MARCA PESSOAL<br />
-                ICÔNICA
-              </h2>
-              
               <p className="font-helvetica text-lg text-foreground/80 max-w-lg leading-relaxed">
-                UM KIT VIRTUAL DIFERENTE DOS<br />
-                IGUAIS PARA DAR OS PRIMEIROS<br />
-                PASSOS E SE DESTACAR NO DIGITAL
+                {getContent('hero', 'description', 'UM KIT VIRTUAL DIFERENTE DOS IGUAIS PARA DAR OS PRIMEIROS PASSOS E SE DESTACAR NO DIGITAL')}
               </p>
               
               <p className="font-brittany text-lg text-foreground/70 italic">
@@ -49,8 +47,16 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-gradient-retro hover:shadow-retro transition-all duration-500 font-helvetica font-bold text-lg px-12 py-6 rounded-xl animate-glow"
+              onClick={() => {
+                const url = getContent('hero', 'button_url', '#inscricoes');
+                if (url.startsWith('#')) {
+                  document.querySelector(url)?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.open(url, '_blank');
+                }
+              }}
             >
-              LIBERE AGORA O SEU ACESSO
+              {getContent('hero', 'button_text', 'LIBERE AGORA O SEU ACESSO')}
             </Button>
           </div>
           
