@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Retro-Future Color Palette */
+    --background: 42 25% 88%;  /* #e4e2dd */
+    --foreground: 0 0% 0%;     /* Dark text */
+
+    --card: 42 25% 88%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 42 25% 88%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 259 100% 66%;    /* #8c52ff */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 266 100% 64%; /* #954eff */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 0 0% 100%;       /* #ffffff */
+    --accent-foreground: 0 0% 0%;
+
+    --muted: 42 25% 88%;
+    --muted-foreground: 0 0% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 42 25% 75%;
+    --input: 42 25% 85%;
+    --ring: 259 100% 66%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --cream: 42 25% 88%;       /* #e4e2dd */
+    --purple-primary: 259 100% 66%;  /* #8c52ff */
+    --purple-secondary: 266 100% 64%; /* #954eff */
+    --white: 0 0% 100%;        /* #ffffff */
+
+    /* Gradients */
+    --gradient-retro: linear-gradient(135deg, hsl(var(--purple-primary)), hsl(var(--purple-secondary)));
+    --gradient-future: linear-gradient(180deg, hsl(var(--cream)), hsl(var(--white)));
+    --gradient-plastic: linear-gradient(45deg, hsl(var(--white) / 0.8), hsl(var(--purple-primary) / 0.1));
+
+    /* Shadows & Effects */
+    --shadow-retro: 0 20px 40px -10px hsl(var(--purple-primary) / 0.3);
+    --shadow-vintage: 0 8px 32px -8px hsl(0 0% 0% / 0.2);
+    --shadow-plastic: 0 4px 16px hsl(var(--purple-secondary) / 0.2);
+
+    /* Typography Scale */
+    --font-hero: clamp(3rem, 8vw, 6rem);
+    --font-title: clamp(2rem, 5vw, 3.5rem);
+    --font-subtitle: clamp(1.25rem, 3vw, 1.75rem);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-helvetica;
+  }
+}
+
+@layer utilities {
+  /* Custom scrolling animation */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  /* Vintage film grain effect */
+  .vintage-grain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+    animation: grain 8s steps(10) infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
+  }
+  
+  /* Retro glow effects */
+  .retro-glow {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  
+  /* Plastic shine effect */
+  .plastic-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .plastic-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 70%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  }
+}
