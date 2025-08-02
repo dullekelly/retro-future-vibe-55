@@ -85,7 +85,7 @@ const Hero = () => {
         <div className="flex animate-[scroll_20s_linear_infinite] whitespace-nowrap">
           {Array.from({ length: 8 }).map((_, i) => (
             <span key={i} className="px-8 font-helvetica font-bold text-sm uppercase tracking-wider flex-shrink-0">
-              INSCRIÇÕES ABERTAS! •
+              {getContent('hero', 'ticker_text_1', 'TRANSFORMAÇÃO DIGITAL')} • {getContent('hero', 'ticker_text_2', 'RESULTADOS COMPROVADOS')} • {getContent('hero', 'ticker_text_3', 'SUPORTE ESPECIALIZADO')} • {getContent('hero', 'ticker_text_4', 'INOVAÇÃO CONSTANTE')} •
             </span>
           ))}
         </div>

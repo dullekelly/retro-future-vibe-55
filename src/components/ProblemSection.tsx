@@ -1,4 +1,12 @@
+import { useContent } from "@/hooks/useContent";
+
 const ProblemSection = () => {
+  const { getContent, loading } = useContent();
+
+  if (loading) {
+    return <div className="py-20 flex items-center justify-center">Carregando...</div>;
+  }
+
   return (
     <section className="py-20 bg-white relative">
       {/* Vintage texture overlay */}
@@ -10,15 +18,15 @@ const ProblemSection = () => {
           {/* Problem Statement */}
           <div className="space-y-8">
             <h2 className="font-anton text-title text-foreground">
-              Você abre as redes sociais e vê quase todos com…
+              {getContent('problem', 'title', 'Problemas Comuns')}
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                "O mesmo conteúdo",
-                "O mesmo look", 
-                "O mesmo formato",
-                "O mesmo feed"
+                getContent('problem', 'problem_1', 'O mesmo conteúdo'),
+                getContent('problem', 'problem_2', 'O mesmo look'),
+                getContent('problem', 'problem_3', 'O mesmo resultado'),
+                getContent('problem', 'problem_4', 'A mesma frustração')
               ].map((item, index) => (
                 <div 
                   key={index}
@@ -38,26 +46,20 @@ const ProblemSection = () => {
             <div className="absolute -inset-8 bg-gradient-retro rounded-3xl blur-2xl opacity-10"></div>
             <div className="relative bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-vintage">
               <h2 className="font-anton text-title text-foreground mb-6">
-                Já chega! Você não é igual a todo mundo.
+                {getContent('problem', 'solution_title', 'Nossa Solução')}
               </h2>
               <h3 className="font-anton text-subtitle">
                 <span className="text-transparent bg-gradient-retro bg-clip-text">
-                  Você é DIFERENTE DOS IGUAIS.
+                  {getContent('problem', 'solution_subtitle', 'A mudança que você precisa')}
                 </span>
               </h3>
               
               <p className="font-helvetica text-lg text-foreground/80 mt-8 max-w-3xl mx-auto leading-relaxed">
-                O Kit Diferente dos Iguais é para você que já produz conteúdo mas ainda não alcançou o nível que gostaria. 
-                É para quem entende a importância de uma marca bem posicionada.
+                {getContent('problem', 'solution_description', 'Oferecemos uma abordagem revolucionária que elimina esses problemas de uma vez por todas.')}
               </p>
               
               <p className="font-helvetica text-lg text-foreground/80 mt-6 max-w-3xl mx-auto leading-relaxed">
-                Você terá em mãos um kit digital com todas as ferramentas que uso para criar uma marca pessoal única, 
-                icônica e impossível de ser ignorada.
-              </p>
-              
-              <p className="font-brittany text-xl text-primary mt-8 italic">
-                É ler e aplicar.
+                {getContent('problem', 'solution_full_description', 'Nossa metodologia exclusiva combina tecnologia de ponta com estratégias comprovadas para entregar resultados que realmente fazem a diferença no seu negócio.')}
               </p>
             </div>
           </div>

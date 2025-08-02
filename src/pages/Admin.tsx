@@ -110,22 +110,58 @@ const Admin = () => {
       updateContent(item.id, value);
     };
 
-    if (item.content_type === 'text' && item.content_key.includes('description')) {
+    // Use Textarea for descriptions, full descriptions and long text content
+    if (item.content_type === 'text' && 
+        (item.content_key.includes('description') || 
+         item.content_key.includes('text') ||
+         item.content_key.includes('full'))) {
       return (
         <Textarea
           value={item.content_value || ''}
           onChange={(e) => handleChange(e.target.value)}
-          className="min-h-[100px]"
+          className="min-h-[100px] resize-none"
+          placeholder="Digite o conteúdo..."
         />
       );
     }
 
+    // Color picker style for color fields
+    if (item.content_type === 'color') {
+      return (
+        <div className="space-y-2">
+          <Input
+            type="text"
+            value={item.content_value || ''}
+            onChange={(e) => handleChange(e.target.value)}
+            placeholder="Ex: 240 10% 3.9%"
+            className="font-mono"
+          />
+          <div className="text-xs text-muted-foreground">
+            Formato HSL: matiz saturação luminosidade
+          </div>
+        </div>
+      );
+    }
+
+    // URL input for URLs and images
+    if (item.content_type === 'url' || item.content_type === 'image') {
+      return (
+        <Input
+          type="url"
+          value={item.content_value || ''}
+          onChange={(e) => handleChange(e.target.value)}
+          placeholder={item.content_type === 'image' ? '/src/assets/image.jpg' : 'https://exemplo.com'}
+        />
+      );
+    }
+
+    // Default text input
     return (
       <Input
-        type={item.content_type === 'color' ? 'text' : 'text'}
+        type="text"
         value={item.content_value || ''}
         onChange={(e) => handleChange(e.target.value)}
-        placeholder={item.content_type === 'color' ? 'Ex: 240 10% 3.9%' : ''}
+        placeholder="Digite o texto..."
       />
     );
   };
@@ -149,34 +185,62 @@ const Admin = () => {
         </div>
 
         <Tabs defaultValue="hero" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="hero">Hero</TabsTrigger>
             <TabsTrigger value="problem">Problemas</TabsTrigger>
             <TabsTrigger value="benefits">Benefícios</TabsTrigger>
             <TabsTrigger value="testimonials">Depoimentos</TabsTrigger>
+            <TabsTrigger value="timer">Timer</TabsTrigger>
+            <TabsTrigger value="general">Geral</TabsTrigger>
           </TabsList>
 
           {Object.entries(groupedContent).map(([section, items]) => (
             <TabsContent key={section} value={section}>
               <Card>
                 <CardHeader>
-                  <CardTitle className="capitalize">{section}</CardTitle>
+                  <CardTitle className="capitalize flex items-center gap-2">
+                    {section === 'hero' && '🏠'} 
+                    {section === 'problem' && '❗'} 
+                    {section === 'benefits' && '✅'} 
+                    {section === 'testimonials' && '💬'} 
+                    {section === 'timer' && '⏰'} 
+                    {section === 'general' && '⚙️'} 
+                    {section}
+                  </CardTitle>
                   <CardDescription>
-                    Edite o conteúdo da seção {section}
+                    {section === 'hero' && 'Configure a seção principal da página'}
+                    {section === 'problem' && 'Defina os problemas e soluções apresentados'}
+                    {section === 'benefits' && 'Gerencie os benefícios e call-to-actions'}
+                    {section === 'testimonials' && 'Edite os depoimentos dos clientes'}
+                    {section === 'timer' && 'Configure o contador regressivo'}
+                    {section === 'general' && 'Configurações gerais do site'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  {items.map((item) => (
-                    <div key={item.id} className="space-y-2">
-                      <Label htmlFor={item.id} className="text-sm font-medium capitalize">
-                        {item.content_key.replace(/_/g, ' ')}
-                        {item.content_type === 'color' && ' (HSL)'}
-                        {item.content_type === 'url' && ' (URL)'}
-                        {item.content_type === 'image' && ' (Caminho da imagem)'}
-                      </Label>
-                      {renderContentField(item)}
-                    </div>
-                  ))}
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {items.map((item) => (
+                      <div key={item.id} className="space-y-3 p-4 border rounded-lg bg-muted/30">
+                        <div className="flex items-center justify-between">
+                          <Label htmlFor={item.id} className="text-sm font-medium capitalize">
+                            {item.content_key.replace(/_/g, ' ')}
+                          </Label>
+                          <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                            {item.content_type === 'color' && '🎨 Cor'}
+                            {item.content_type === 'url' && '🔗 URL'}
+                            {item.content_type === 'image' && '🖼️ Imagem'}
+                            {item.content_type === 'text' && '📝 Texto'}
+                          </span>
+                        </div>
+                        {renderContentField(item)}
+                        {saving && (
+                          <div className="text-xs text-muted-foreground flex items-center gap-1">
+                            <div className="h-3 w-3 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                            Salvando...
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>

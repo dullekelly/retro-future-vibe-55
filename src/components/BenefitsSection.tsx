@@ -1,11 +1,20 @@
 import { Button } from "@/components/ui/button";
+import { useContent } from "@/hooks/useContent";
 
 const BenefitsSection = () => {
+  const { getContent, loading } = useContent();
+
+  if (loading) {
+    return <div className="py-20 flex items-center justify-center">Carregando...</div>;
+  }
+
   const benefits = [
-    "Clareza do seu Propósito no digital",
-    "Uma marca única, com o seu DNA", 
-    "Visão de longo prazo",
-    "Repertório para não precisar replicar conteúdos"
+    getContent('benefits', 'benefit_1', 'Resultados em 30 dias'),
+    getContent('benefits', 'benefit_2', 'Suporte 24/7'),
+    getContent('benefits', 'benefit_3', 'Garantia de satisfação'),
+    getContent('benefits', 'benefit_4', 'Metodologia exclusiva'),
+    getContent('benefits', 'benefit_5', 'Acompanhamento personalizado'),
+    getContent('benefits', 'benefit_6', 'Comunidade ativa')
   ];
 
   return (
@@ -20,15 +29,12 @@ const BenefitsSection = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="font-anton text-title text-foreground mb-8">
-              Na prática, ao aplicar o Manual Virtual<br />
-              <span className="text-transparent bg-gradient-retro bg-clip-text">
-                DIFERENTE DOS IGUAIS
-              </span>, você terá:
+              {getContent('benefits', 'title', 'Benefícios Exclusivos')}
             </h2>
           </div>
           
           {/* Benefits Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {benefits.map((benefit, index) => (
               <div 
                 key={index}
@@ -67,21 +73,32 @@ const BenefitsSection = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="font-anton text-subtitle text-foreground">
-                    Transforme sua presença digital hoje mesmo
-                  </h3>
-                  <p className="font-helvetica text-lg text-foreground/80 max-w-2xl mx-auto">
-                    Um kit completo com todas as ferramentas, templates e estratégias para criar uma marca pessoal única e inesquecível.
-                  </p>
-                </div>
-                
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-retro hover:shadow-retro transition-all duration-500 font-helvetica font-bold text-xl px-16 py-8 rounded-xl animate-glow"
-                >
-                  QUERO MINHA TRANSFORMAÇÃO AGORA
-                </Button>
+                  <div className="space-y-4">
+                    <h3 className="font-anton text-subtitle text-foreground">
+                      {getContent('benefits', 'product_name', 'Produto Revolucionário')}
+                    </h3>
+                    <p className="font-helvetica text-lg text-primary/80 mb-2">
+                      {getContent('benefits', 'product_tagline', 'A solução que você estava esperando')}
+                    </p>
+                    <p className="font-helvetica text-lg text-foreground/80 max-w-2xl mx-auto">
+                      {getContent('benefits', 'product_description', 'Descubra como nosso produto pode transformar sua realidade e levar seus resultados para o próximo nível.')}
+                    </p>
+                  </div>
+                  
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-retro hover:shadow-retro transition-all duration-500 font-helvetica font-bold text-xl px-16 py-8 rounded-xl animate-glow"
+                    onClick={() => {
+                      const url = getContent('benefits', 'button_url', '#inscricoes');
+                      if (url.startsWith('#')) {
+                        document.querySelector(url)?.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.open(url, '_blank');
+                      }
+                    }}
+                  >
+                    {getContent('benefits', 'button_text', 'GARANTIR MINHA VAGA')}
+                  </Button>
               </div>
             </div>
           </div>

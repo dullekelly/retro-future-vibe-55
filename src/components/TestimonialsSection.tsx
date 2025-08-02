@@ -1,19 +1,27 @@
+import { useContent } from "@/hooks/useContent";
+
 const TestimonialsSection = () => {
+  const { getContent, loading } = useContent();
+
+  if (loading) {
+    return <div className="py-20 flex items-center justify-center">Carregando...</div>;
+  }
+
   const testimonials = [
     {
-      name: "Maria Silva",
-      role: "Content Creator",
-      text: "Depois de aplicar as estratégias do kit, minha marca pessoal realmente se destacou. Agora tenho uma identidade única!"
+      name: getContent('testimonials', 'testimonial_1_name', 'Maria Silva'),
+      role: getContent('testimonials', 'testimonial_1_role', 'CEO, TechStart'),
+      text: getContent('testimonials', 'testimonial_1_text', 'Incrível como conseguiram transformar nosso negócio em apenas algumas semanas. Os resultados superaram todas as expectativas!')
     },
     {
-      name: "João Santos", 
-      role: "Empreendedor Digital",
-      text: "O material é incrível! Consegui definir meu propósito e criar conteúdos que realmente fazem sentido para minha audiência."
+      name: getContent('testimonials', 'testimonial_2_name', 'João Santos'),
+      role: getContent('testimonials', 'testimonial_2_role', 'Diretor de Marketing'),
+      text: getContent('testimonials', 'testimonial_2_text', 'O suporte é excepcional e a metodologia realmente funciona. Recomendo para qualquer empresa que quer crescer.')
     },
     {
-      name: "Ana Costa",
-      role: "Influenciadora",
-      text: "Finalmente encontrei minha voz autêntica. O kit me deu todas as ferramentas que precisava para ser diferente dos iguais."
+      name: getContent('testimonials', 'testimonial_3_name', 'Ana Costa'),
+      role: getContent('testimonials', 'testimonial_3_role', 'Empreendedora'),
+      text: getContent('testimonials', 'testimonial_3_text', 'Depois de implementar a solução, meu faturamento triplicou. Não imaginava que seria possível!')
     }
   ];
 
@@ -28,10 +36,10 @@ const TestimonialsSection = () => {
           
           <div className="text-center mb-16">
             <h2 className="font-anton text-title text-foreground mb-4">
-              Veja o que dizem sobre o Método de Criação de Marcas
+              {getContent('testimonials', 'title', 'O que nossos clientes dizem')}
             </h2>
             <h3 className="font-anton text-subtitle text-transparent bg-gradient-retro bg-clip-text">
-              DIFERENTE DOS IGUAIS
+              {getContent('testimonials', 'subtitle', 'Histórias reais de transformação')}
             </h3>
           </div>
           
