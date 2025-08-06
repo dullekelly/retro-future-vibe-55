@@ -187,9 +187,9 @@ const Admin = () => {
         <Tabs defaultValue="hero" className="space-y-8">
           <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="hero">Hero</TabsTrigger>
-            <TabsTrigger value="problem">Problemas</TabsTrigger>
-            <TabsTrigger value="benefits">Benefícios</TabsTrigger>
-            <TabsTrigger value="testimonials">Depoimentos</TabsTrigger>
+            <TabsTrigger value="problem">Você sente que precisa aparecer, mas trava?</TabsTrigger>
+            <TabsTrigger value="benefits">Itens Exclusivos</TabsTrigger>
+            <TabsTrigger value="testimonials">O que nossos clientes dizem</TabsTrigger>
             <TabsTrigger value="timer">Timer</TabsTrigger>
             <TabsTrigger value="general">Geral</TabsTrigger>
           </TabsList>
@@ -199,19 +199,37 @@ const Admin = () => {
               <Card>
                 <CardHeader>
                   <CardTitle className="capitalize flex items-center gap-2">
-                    {section === 'hero' && '🏠'} 
-                    {section === 'problem' && '❗'} 
-                    {section === 'benefits' && '✅'} 
-                    {section === 'testimonials' && '💬'} 
-                    {section === 'timer' && '⏰'} 
-                    {section === 'general' && '⚙️'} 
-                    {section}
+                    {section === 'hero' && '🏠 Hero'}
+                    {section === 'problem' && '❗ Você sente que precisa aparecer, mas trava?'}
+                    {section === 'benefits' && '🎁 Itens Exclusivos'}
+                    {section === 'testimonials' && '💬 O que nossos clientes dizem'}
+                    {section === 'timer' && '⏰ Timer'}
+                    {section === 'general' && '⚙️ Geral'}
                   </CardTitle>
                   <CardDescription>
                     {section === 'hero' && 'Configure a seção principal da página'}
-                    {section === 'problem' && 'Defina os problemas e soluções apresentados'}
-                    {section === 'benefits' && 'Gerencie os benefícios e call-to-actions'}
-                    {section === 'testimonials' && 'Edite os depoimentos dos clientes'}
+                    {section === 'problem' && (
+                      <>
+                        <div>Não sabe o que falar nos stories?</div>
+                        <div>Acha que sua voz ou imagem "não são boas o suficiente"?</div>
+                        <div>Tem vergonha de parecer forçado ou de ser julgado?</div>
+                        <div>É empreendedor local e sabe que precisa se comunicar melhor, mas não sabe por onde começar?</div>
+                      </>
+                    )}
+                    {section === 'benefits' && (
+                      <>
+                        <div>Aula bônus com uma terapeuta para trabalhar o medo de aparecer</div>
+                        <div>Cronograma completo de stories prontos para usar</div>
+                        <div>Desconto exclusivo por ser da primeira turma</div>
+                      </>
+                    )}
+                    {section === 'testimonials' && (
+                      <>
+                        <div>"Dulle você sabe que admiro seu trabalho e sua inteligência, né? Sou grata pela oportunidade de ter sua parceria, por ter me encorajado a deixar os medos e as inseguranças de lado e me atirar no meu sonho, hoje tenho dominio da comunicação em frente as câmeras. Oportunidade ímpar que tive e tenho em ter você com suas ideias e propostas brilhantes…Hoje temos várias ideias de Reels para a divulgação nos nossos produtos…Obrigada pela sua competência!"<br/>- Tatiane Milhomem</div>
+                        <div>"Nós tínhamos (e ainda temos) muita timidez pra gravar vídeos. Mas graças a Deus encontramos você, Dulle, que nos ensinou como os Reels são importantes, aqui nas redes sociais, e que podemos trazer conteúdos de valor e de qualidade para o público através deles. Prova disso tem sido o crescimento da nossa página. Hoje nosso trabalho está sendo visto em outros estados e estamos ganhando autoridade com nossos serviços. E o que mais tem tido engajamento em nosso perfil, são os conteúdos trazidos através dos Reels."<br/>- Ludmilla Goiz, Enfermeira especialista em feridas, proprietária da Curare</div>
+                        <div>"A Dulle é simplesmente incrível quando o assunto é criatividade, e digo isso porque eu era péssimo nessa questão, tanto na criação quanto na edição de conteúdos, não entendia nada... Me ensinou simplesmente tudo, e de forma independente, ou seja, ela sempre quer que você aprenda a fazer sozinho e não ficar dependente de ninguém, e é exatamente isso que eu procurava. E me ajudou muito na organização de absolutamente tudo no meu Instagram. Recomendo a Dulle de olhos fechados, com certeza ela vai ser um divisor de águas na sua rede social."<br/>- Dr. Iago Mussi, Cirurgião-dentista Harmonizador Facial, com foco na naturalidade</div>
+                      </>
+                    )}
                     {section === 'timer' && 'Configure o contador regressivo'}
                     {section === 'general' && 'Configurações gerais do site'}
                   </CardDescription>

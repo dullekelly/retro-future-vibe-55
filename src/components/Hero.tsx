@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-noise opacity-20"></div>
       
       {/* Background geometric shapes */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-plastic rounded-full blur-3xl opacity-30 animate-float"></div>
+      {/* <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-plastic rounded-full blur-3xl opacity-30 animate-float"></div> */}
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-gradient-retro rounded-full blur-2xl opacity-20 animate-vintage-pulse"></div>
       
       <div className="relative container mx-auto px-6 py-20">
@@ -27,20 +27,17 @@ const Hero = () => {
                 KIT BRANDING
               </p>
               <h1 className="font-anton text-hero leading-none">
-                <span className="block text-foreground">{getContent('hero', 'title', 'DIFERENTE')}</span>
-                <span className="block text-transparent bg-gradient-retro bg-clip-text animate-gradient-shift">
-                  {getContent('hero', 'subtitle', 'DOS IGUAIS')}
-                </span>
+                <span className="block text-foreground">Destrave Sua Voz no Digital</span>
               </h1>
             </div>
             
             <div className="space-y-6">
               <p className="font-helvetica text-lg text-foreground/80 max-w-lg leading-relaxed">
-                {getContent('hero', 'description', 'UM KIT VIRTUAL DIFERENTE DOS IGUAIS PARA DAR OS PRIMEIROS PASSOS E SE DESTACAR NO DIGITAL')}
+                A Jornada que Vai Libertar o Protagonista que Existe em Você!
               </p>
               
               <p className="font-brittany text-lg text-foreground/70 italic">
-                – Por Ketherin Kaffka
+                – Por Dulle Kelly
               </p>
             </div>
             
@@ -72,8 +69,7 @@ const Hero = () => {
               {/* Glossy overlay effect */}
               <div className="absolute inset-0 bg-gradient-plastic rounded-2xl opacity-20"></div>
               
-              {/* Glow effect */}
-              <div className="absolute -inset-4 bg-gradient-retro rounded-3xl blur-xl opacity-20 animate-glow"></div>
+              {/* Glow effect removido */}
             </div>
           </div>
           
