@@ -18,15 +18,15 @@ const ProblemSection = () => {
           {/* Problem Statement */}
           <div className="space-y-8">
             <h2 className="font-anton text-title text-foreground">
-              {getContent('problem', 'title', 'Problemas Comuns')}
+              {getContent('problem', 'title', 'Você sente que precisa aparecer, mas trava?')}
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                getContent('problem', 'problem_1', 'O mesmo conteúdo'),
-                getContent('problem', 'problem_2', 'O mesmo look'),
-                getContent('problem', 'problem_3', 'O mesmo resultado'),
-                getContent('problem', 'problem_4', 'A mesma frustração')
+                getContent('problem', 'problem_1', 'Não sabe o que falar nos stories?'),
+                getContent('problem', 'problem_2', 'Acha que sua voz ou imagem "não são boas o suficiente"?'),
+                getContent('problem', 'problem_3', 'Tem vergonha de parecer forçado ou de ser julgado?'),
+                getContent('problem', 'problem_4', 'É empreendedor local e sabe que precisa se comunicar melhor, mas não sabe por onde começar?')
               ].map((item, index) => (
                 <div 
                   key={index}
@@ -46,20 +46,20 @@ const ProblemSection = () => {
             <div className="absolute -inset-8 bg-gradient-retro rounded-3xl blur-2xl opacity-10"></div>
             <div className="relative bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-vintage">
               <h2 className="font-anton text-title text-foreground mb-6">
-                {getContent('problem', 'solution_title', 'Nossa Solução')}
+                {getContent('problem', 'solution_title', 'JÁ CHEGA!')}
               </h2>
               <h3 className="font-anton text-subtitle">
                 <span className="text-transparent bg-gradient-retro bg-clip-text">
-                  {getContent('problem', 'solution_subtitle', 'A mudança que você precisa')}
+                  {getContent('problem', 'solution_subtitle', 'Já deu de se esconder.')}
                 </span>
               </h3>
               
               <p className="font-helvetica text-lg text-foreground/80 mt-8 max-w-3xl mx-auto leading-relaxed">
-                {getContent('problem', 'solution_description', 'Oferecemos uma abordagem revolucionária que elimina esses problemas de uma vez por todas.')}
+                {getContent('problem', 'solution_description', 'Já deu de ver gente com menos experiência que você crescendo só porque tiveram coragem de aparecer.')}
               </p>
               
               <p className="font-helvetica text-lg text-foreground/80 mt-6 max-w-3xl mx-auto leading-relaxed">
-                {getContent('problem', 'solution_full_description', 'Nossa metodologia exclusiva combina tecnologia de ponta com estratégias comprovadas para entregar resultados que realmente fazem a diferença no seu negócio.')}
+                {getContent('problem', 'solution_full_description', 'Essa jornada é o que faltava pra você sair da zona do medo e entrar no campo da ação. Você tem um negócio incrível. E tá na hora do mundo ouvir sua voz.')}
               </p>
             </div>
           </div>

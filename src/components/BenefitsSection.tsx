@@ -9,12 +9,9 @@ const BenefitsSection = () => {
   }
 
   const benefits = [
-    getContent('benefits', 'benefit_1', 'Resultados em 30 dias'),
-    getContent('benefits', 'benefit_2', 'Suporte 24/7'),
-    getContent('benefits', 'benefit_3', 'Garantia de satisfação'),
-    getContent('benefits', 'benefit_4', 'Metodologia exclusiva'),
-    getContent('benefits', 'benefit_5', 'Acompanhamento personalizado'),
-    getContent('benefits', 'benefit_6', 'Comunidade ativa')
+    getContent('benefits', 'benefit_1', 'Aula bônus com uma terapeuta para trabalhar o medo de aparecer'),
+    getContent('benefits', 'benefit_2', 'Cronograma completo de stories prontos para usar'),
+    getContent('benefits', 'benefit_3', 'Desconto exclusivo por ser da primeira turma')
   ];
 
   return (
@@ -78,10 +75,7 @@ const BenefitsSection = () => {
                       {getContent('benefits', 'product_name', 'Produto Revolucionário')}
                     </h3>
                     <p className="font-helvetica text-lg text-primary/80 mb-2">
-                      {getContent('benefits', 'product_tagline', 'A solução que você estava esperando')}
-                    </p>
-                    <p className="font-helvetica text-lg text-foreground/80 max-w-2xl mx-auto">
-                      {getContent('benefits', 'product_description', 'Descubra como nosso produto pode transformar sua realidade e levar seus resultados para o próximo nível.')}
+                      {getContent('benefits', 'product_tagline', 'Você pode continuar dizendo "não é pra mim", "depois eu vejo isso"… Mas a real é: quem não se comunica, não vende. E quem não aparece, não é lembrado.')}
                     </p>
                   </div>
                   
